@@ -1,0 +1,252 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@layer base {
+  :root {
+    /* WNCL Coach Portal - Royal Blue & Gold Theme */
+    --background: 0 0% 100%;
+    --foreground: 220 20% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
+
+    /* Royal Blue Primary */
+    --primary: 220 100% 20%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Light Blue Secondary */
+    --secondary: 220 30% 96%;
+    --secondary-foreground: 220 100% 20%;
+
+    --muted: 220 20% 96%;
+    --muted-foreground: 220 10% 45%;
+
+    /* Golden Yellow Accent */
+    --accent: 51 100% 50%;
+    --accent-foreground: 220 20% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Success/Available */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    /* Warning/Limited */
+    --warning: 38 92% 50%;
+    --warning-foreground: 220 20% 10%;
+
+    --border: 220 20% 90%;
+    --input: 220 20% 90%;
+    --ring: 220 100% 20%;
+
+    --radius: 0.75rem;
+
+    /* Sidebar - Royal Blue */
+    --sidebar-background: 220 100% 20%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 51 100% 50%;
+    --sidebar-primary-foreground: 220 20% 10%;
+    --sidebar-accent: 220 100% 30%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 220 100% 25%;
+    --sidebar-ring: 51 100% 50%;
+
+    /* Custom Coach Portal Tokens */
+    --royal-blue: 220 100% 20%;
+    --royal-blue-light: 220 100% 30%;
+    --royal-blue-dark: 220 100% 15%;
+    --gold: 51 100% 50%;
+    --gold-light: 51 100% 60%;
+    --gold-dark: 51 100% 40%;
+    --pitch-green: 140 50% 35%;
+    --pitch-line: 0 0% 100%;
+
+    /* Gradients */
+    --gradient-royal: linear-gradient(135deg, hsl(220, 100%, 20%), hsl(220, 100%, 30%));
+    --gradient-gold: linear-gradient(135deg, hsl(51, 100%, 50%), hsl(45, 100%, 55%));
+    --gradient-hero: linear-gradient(135deg, hsl(220, 100%, 20%) 0%, hsl(220, 100%, 25%) 50%, hsl(220, 100%, 20%) 100%);
+
+    /* Shadows */
+    --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.05), 0 1px 2px -1px rgb(0 0 0 / 0.05);
+    --shadow-elevated: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
+    --shadow-gold: 0 4px 14px -3px hsl(51 100% 50% / 0.3);
+  }
+
+  .dark {
+    --background: 220 20% 10%;
+    --foreground: 0 0% 98%;
+    --card: 220 20% 12%;
+    --card-foreground: 0 0% 98%;
+    --popover: 220 20% 12%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 51 100% 50%;
+    --primary-foreground: 220 20% 10%;
+    --secondary: 220 30% 20%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 220 20% 18%;
+    --muted-foreground: 220 10% 60%;
+    --accent: 220 100% 30%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 51 100% 50%;
+    --sidebar-background: 220 20% 8%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 51 100% 50%;
+    --sidebar-primary-foreground: 220 20% 10%;
+    --sidebar-accent: 220 30% 15%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 220 20% 15%;
+    --sidebar-ring: 51 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Metric Card with Golden Accent */
+  .metric-card {
+    @apply bg-card rounded-xl p-5 border-2 border-border transition-all duration-300;
+    box-shadow: var(--shadow-card);
+  }
+
+  .metric-card:hover {
+    @apply border-primary/30;
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .metric-card .metric-value {
+    @apply text-3xl font-bold text-accent;
+  }
+
+  /* Hero Match Card */
+  .hero-match-card {
+    background: var(--gradient-hero);
+    @apply rounded-2xl p-6 text-primary-foreground relative overflow-hidden;
+  }
+
+  .hero-match-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, hsl(51 100% 50% / 0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Pitch Pattern Background */
+  .pitch-pattern {
+    background-color: hsl(var(--pitch-green));
+    background-image: 
+      linear-gradient(to right, hsl(var(--pitch-line) / 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--pitch-line) / 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Golden Badge */
+  .golden-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    background: var(--gradient-gold);
+    color: hsl(var(--foreground));
+  }
+
+  /* Status Indicators */
+  .status-available {
+    @apply bg-success text-success-foreground;
+  }
+
+  .status-limited {
+    @apply bg-warning text-warning-foreground;
+  }
+
+  .status-unavailable {
+    @apply bg-destructive text-destructive-foreground;
+  }
+
+  /* AI Chat Bubble */
+  .ai-bubble {
+    @apply rounded-2xl rounded-tl-md p-4;
+    background: linear-gradient(135deg, hsl(51 100% 50% / 0.15) 0%, hsl(51 100% 50% / 0.05) 100%);
+    border: 1px solid hsl(51 100% 50% / 0.3);
+  }
+
+  /* Navigation Active State */
+  .nav-active {
+    @apply bg-sidebar-accent text-sidebar-primary;
+  }
+
+  /* Gauge Ring */
+  .gauge-ring {
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.5s ease-in-out;
+  }
+
+  /* Scrollbar Styling */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 3px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 3px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gradient-royal {
+    background: var(--gradient-royal);
+  }
+
+  .gradient-gold {
+    background: var(--gradient-gold);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+}
