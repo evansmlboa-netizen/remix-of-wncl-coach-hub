@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import {
   LayoutDashboard,
@@ -19,23 +18,24 @@ import { Button } from "@/components/ui/button";
 
 const navItems = [
   { icon: LayoutDashboard, label: "Dashboard", path: "/" },
-  { icon: CalendarClock, label: "Next Match Preparation", path: "/match-prep" },
-  { icon: Trophy, label: "Fixtures & Results", path: "/fixtures" },
-  { icon: Users, label: "Squad & Availability", path: "/squad" },
-  { icon: Target, label: "Tactics & Formations", path: "/tactics" },
-  { icon: BarChart3, label: "Performance Analytics", path: "/analytics" },
-  { icon: Bot, label: "AI Coach Assistant", path: "/ai-assistant" },
-  { icon: GraduationCap, label: "Training & E-Learning", path: "/training" },
-  { icon: MessageSquare, label: "Internal Communications", path: "/communications" },
-  { icon: Image, label: "Media & Gallery", path: "/media" },
+  { icon: CalendarClock, label: "Match Prep", path: "/match-prep" },
+  { icon: Trophy, label: "Fixtures", path: "/fixtures" },
+  { icon: Users, label: "Squad", path: "/squad" },
+  { icon: Target, label: "Tactics", path: "/tactics" },
+  { icon: BarChart3, label: "Analytics", path: "/analytics" },
+  { icon: Bot, label: "AI Coach", path: "/ai-assistant" },
+  { icon: GraduationCap, label: "Training", path: "/training" },
+  { icon: MessageSquare, label: "Comms", path: "/communications" },
+  { icon: Image, label: "Media", path: "/media" },
 ];
 
 interface SidebarProps {
   collapsed: boolean;
   onToggle: () => void;
+  onNavigate?: () => void;
 }
 
-export function Sidebar({ collapsed, onToggle }: SidebarProps) {
+export function Sidebar({ collapsed, onToggle, onNavigate }: SidebarProps) {
   const location = useLocation();
 
   return (
@@ -71,6 +71,7 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
               <li key={item.path}>
                 <NavLink
                   to={item.path}
+                  onClick={onNavigate}
                   className={cn(
                     "flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 group",
                     isActive

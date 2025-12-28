@@ -1,4 +1,4 @@
-import { Bell, ChevronDown, Trophy, Shield } from "lucide-react";
+import { Bell, ChevronDown, Shield, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -7,35 +7,44 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { cn } from "@/lib/utils";
 
 interface HeaderProps {
   sidebarCollapsed: boolean;
+  isMobile?: boolean;
+  onMenuClick?: () => void;
 }
 
-export function Header({ sidebarCollapsed }: HeaderProps) {
+export function Header({ sidebarCollapsed, isMobile, onMenuClick }: HeaderProps) {
   return (
     <header
-      className={`fixed top-0 right-0 z-30 h-16 bg-background border-b border-border flex items-center justify-between px-6 transition-all duration-300 ${
-        sidebarCollapsed ? "left-[72px]" : "left-64"
-      }`}
+      className={cn(
+        "fixed top-0 right-0 z-30 h-16 bg-background border-b border-border flex items-center justify-between px-4 md:px-6 transition-all duration-300",
+        isMobile ? "left-0" : sidebarCollapsed ? "left-[72px]" : "left-64"
+      )}
     >
-      {/* Left: Team Info */}
-      <div className="flex items-center gap-4">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-            <Shield className="w-6 h-6 text-primary-foreground" />
+      {/* Left: Menu Button (mobile) + Team Info */}
+      <div className="flex items-center gap-2 md:gap-4">
+        {isMobile && (
+          <Button variant="ghost" size="icon" onClick={onMenuClick} className="shrink-0">
+            <Menu className="w-5 h-5" />
+          </Button>
+        )}
+        <div className="flex items-center gap-2 md:gap-3">
+          <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-primary flex items-center justify-center shrink-0">
+            <Shield className="w-4 h-4 md:w-6 md:h-6 text-primary-foreground" />
           </div>
-          <div>
-            <h2 className="font-semibold text-foreground">Riverside United FC</h2>
-            <p className="text-xs text-muted-foreground">Western National Conference League</p>
+          <div className="hidden sm:block">
+            <h2 className="font-semibold text-foreground text-sm md:text-base">Riverside United FC</h2>
+            <p className="text-xs text-muted-foreground hidden md:block">Western National Conference League</p>
           </div>
         </div>
 
-        {/* Season Dropdown */}
+        {/* Season Dropdown - hidden on mobile */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" size="sm" className="ml-4">
-              2024/25 Season
+            <Button variant="outline" size="sm" className="ml-2 md:ml-4 hidden sm:flex">
+              2024/25
               <ChevronDown className="w-4 h-4 ml-1" />
             </Button>
           </DropdownMenuTrigger>

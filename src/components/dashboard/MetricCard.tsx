@@ -28,14 +28,14 @@ export function MetricCard({
       className={cn("metric-card animate-fade-in", className)}
       style={{ animationDelay: `${delay}ms` }}
     >
-      <div className="flex items-start justify-between mb-3">
-        <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-          <Icon className="w-5 h-5 text-primary" />
+      <div className="flex items-start justify-between mb-2 md:mb-3">
+        <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+          <Icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
         </div>
         {trend && (
           <span
             className={cn(
-              "text-xs font-medium px-2 py-1 rounded-full",
+              "text-[10px] md:text-xs font-medium px-1.5 md:px-2 py-0.5 md:py-1 rounded-full",
               trend.positive
                 ? "bg-success/10 text-success"
                 : "bg-destructive/10 text-destructive"
@@ -46,10 +46,10 @@ export function MetricCard({
           </span>
         )}
       </div>
-      <p className="text-sm text-muted-foreground mb-1">{title}</p>
-      <p className="metric-value animate-count-up">{value}</p>
+      <p className="text-xs md:text-sm text-muted-foreground mb-1">{title}</p>
+      <p className="text-xl md:text-3xl font-bold text-accent animate-count-up">{value}</p>
       {subtitle && (
-        <p className="text-xs text-muted-foreground mt-1">{subtitle}</p>
+        <p className="text-[10px] md:text-xs text-muted-foreground mt-1">{subtitle}</p>
       )}
     </div>
   );
