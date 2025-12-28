@@ -45,25 +45,25 @@ export function QuickActions() {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-card rounded-xl border border-border p-5 shadow-card animate-fade-in" style={{ animationDelay: "200ms" }}>
-      <h3 className="font-semibold text-foreground mb-4">Quick Actions</h3>
+    <div className="bg-card rounded-xl border border-border p-4 md:p-5 shadow-card animate-fade-in" style={{ animationDelay: "200ms" }}>
+      <h3 className="font-semibold text-foreground mb-3 md:mb-4 text-sm md:text-base">Quick Actions</h3>
       <div className="space-y-2">
         {actions.map((action) => (
           <Button
             key={action.label}
             variant={action.variant}
-            className="w-full justify-start gap-3 h-auto py-3"
+            className="w-full justify-start gap-2 md:gap-3 h-auto py-2.5 md:py-3 text-sm"
             onClick={() => navigate(action.path)}
           >
-            <action.icon className="w-5 h-5 flex-shrink-0" />
-            <div className="flex-1 text-left">
+            <action.icon className="w-4 h-4 md:w-5 md:h-5 flex-shrink-0" />
+            <div className="flex-1 text-left min-w-0">
               <div className="flex items-center gap-2">
-                <span className="font-medium">{action.label}</span>
+                <span className="font-medium truncate">{action.label}</span>
                 {action.badge && (
-                  <span className="golden-badge">{action.badge}</span>
+                  <span className="golden-badge text-[10px] md:text-xs">{action.badge}</span>
                 )}
               </div>
-              <span className="text-xs opacity-70">{action.description}</span>
+              <span className="text-[10px] md:text-xs opacity-70 hidden sm:block">{action.description}</span>
             </div>
           </Button>
         ))}

@@ -7,9 +7,9 @@ import { RecentResults } from "@/components/dashboard/RecentResults";
 
 export default function Dashboard() {
   return (
-    <div className="space-y-6">
-      {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+    <div className="space-y-4 md:space-y-6">
+      {/* Breadcrumb - hide on mobile */}
+      <div className="hidden sm:flex items-center gap-2 text-sm text-muted-foreground">
         <span>Coach Portal</span>
         <span>/</span>
         <span className="text-foreground font-medium">Dashboard</span>
@@ -17,8 +17,8 @@ export default function Dashboard() {
 
       {/* Page Header */}
       <div>
-        <h1 className="text-2xl font-bold text-foreground">Welcome back, Coach</h1>
-        <p className="text-muted-foreground">
+        <h1 className="text-xl md:text-2xl font-bold text-foreground">Welcome back, Coach</h1>
+        <p className="text-sm md:text-base text-muted-foreground">
           Here's what's happening with your team today.
         </p>
       </div>

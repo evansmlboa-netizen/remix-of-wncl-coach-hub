@@ -128,7 +128,7 @@
 @layer components {
   /* Metric Card with Golden Accent */
   .metric-card {
-    @apply bg-card rounded-xl p-5 border-2 border-border transition-all duration-300;
+    @apply bg-card rounded-xl p-3 md:p-5 border-2 border-border transition-all duration-300;
     box-shadow: var(--shadow-card);
   }
 
@@ -138,13 +138,13 @@
   }
 
   .metric-card .metric-value {
-    @apply text-3xl font-bold text-accent;
+    @apply text-xl md:text-3xl font-bold text-accent;
   }
 
   /* Hero Match Card */
   .hero-match-card {
     background: var(--gradient-hero);
-    @apply rounded-2xl p-6 text-primary-foreground relative overflow-hidden;
+    @apply rounded-xl md:rounded-2xl p-4 md:p-6 text-primary-foreground relative overflow-hidden;
   }
 
   .hero-match-card::before {
